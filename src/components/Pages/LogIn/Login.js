@@ -1,8 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    const email = data.userEmail;
+    const password = data.password;
+    signInWithEmailAndPassword(email, password);
+    navigate("/");
+  };
+
   return (
     <div className=" flex flex-col sm:flex-row justify-center  px-10 sm:px-32 lg:px-10 ">
       <div className="lg:flex-1 lg:flex hidden">
@@ -18,17 +40,31 @@ const Login = () => {
             <h2 class=" mb-8 text-3xl font-bold ">Please Login</h2>
           </div>
 
-          <form className=" ">
+          <form onSubmit={handleSubmit(onSubmit)} className=" ">
             <div class=" my-6">
               <div class="div relative">
                 <input
-                  type="text"
+                  type="email"
                   placeholder="User Email"
-                  class=" pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered border-gray-400 border-b-2 focus:outline-none focus:border-b-success w-full"
-                  required
+                  {...register("userEmail", { required: true })}
+                  class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
+                    errors.userEmail?.type === "required"
+                      ? "border-red-600"
+                      : "border-gray-400"
+                  }`}
                 />
+                {/* <p className=" text-base font-[600] text-red-600">
+                  {errors.userEmail?.type === "required" &&
+                    "User Email is required"}
+                </p> */}
                 <div class=" absolute top-2 left-3">
-                  <i class="fas fa-user text-[16px]"></i>
+                  <i
+                    class={` fa-sharp fa-solid fa-envelope text-[16px] ${
+                      errors.userEmail?.type === "required"
+                        ? "text-red-600"
+                        : "text-gray-600"
+                    }`}
+                  ></i>
                 </div>
               </div>
             </div>
@@ -37,11 +73,25 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="User Password"
-                  class=" pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered  border-gray-400 border-b-2 focus:outline-none focus:border-b-success w-full"
-                  required
+                  {...register("password", { required: true })}
+                  class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
+                    errors.password?.type === "required"
+                      ? "border-red-600"
+                      : "border-gray-400"
+                  }`}
                 />
+                {/* <p className=" text-base font-[600] text-red-600">
+                  {errors.password?.type === "required" &&
+                    "password is required"}
+                </p> */}
                 <div class=" absolute top-2 left-3">
-                  <i class="fas fa-lock text-[16px]"></i>
+                  <i
+                    class={`fas fa-lock text-[16px] ${
+                      errors.password?.type === "required"
+                        ? "text-red-600"
+                        : "text-gray-600"
+                    }`}
+                  ></i>
                 </div>
               </div>
             </div>

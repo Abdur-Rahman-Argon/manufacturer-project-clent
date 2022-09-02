@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { Link } from "react-router-dom";
 import logo from "./../../../images/ADM-Logo.png";
+import profile from "./../../../images/profileimg.png";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -17,6 +18,7 @@ const Navbar = () => {
       <li>
         <Link to="/">ShopNow</Link>
       </li>
+
       {/* <li tabindex="0">
   <Link to='/'>Parent</Link>
   <ul class="p-2">
@@ -30,6 +32,7 @@ const Navbar = () => {
     </li>
   </ul> 
 </li>*/}
+
       <li>
         <Link to="/">purchase</Link>
       </li>
@@ -78,7 +81,7 @@ const Navbar = () => {
 
       <li class="dropdown dropdown-down dropdown-hover ">
         <label tabindex="0" class=" m-1">
-          Profile
+          <img src={profile} className="rounded-full" alt="" />
         </label>
         <ul
           tabindex="0"
@@ -93,11 +96,11 @@ const Navbar = () => {
   // const menuOption4 = <></>;
 
   return (
-    <div class="navbar font-semibold bg-gray-100 px-5 sm:px-10 lg:px-20">
+    <div class="navbar font-semibold bg-slate-300 px-5 sm:px-10 lg:px-20">
       {/*  */}
       <div class="navbar-start">
         <Link to="/" href="/" class=" normal-case text-xl">
-          <img src={logo} alt="" className="w-20" />
+          <img src={logo} alt="" className="w-16" />
         </Link>
       </div>
 
@@ -111,12 +114,15 @@ const Navbar = () => {
         {user ? (
           <>
             <div class=" hidden lg:flex dropdown dropdown-hover dropdown-end">
-              <label tabindex="8" class="btn btn-ghost">
-                Profile
+              <label
+                tabindex="8"
+                class=" btn btn-ghost hover:bg-slate-300 pl-14"
+              >
+                <img src={profile} className="rounded-full w-7" alt="" />
               </label>
               <ul
                 tabindex="8"
-                class="menu menu-compact dropdown-content mt-12 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
+                class="menu menu-compact dropdown-content mt-12 p-2 shadow bg-slate-200 rounded-box w-52 gap-2"
               >
                 {menuOptionProfile}
               </ul>
