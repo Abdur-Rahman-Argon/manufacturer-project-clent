@@ -1,61 +1,80 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import { Link } from "react-router-dom";
+import logo from "./../../../images/ADM-Logo.png";
 
 const Navbar = () => {
-  const manuOption1 = (
+  const [user] = useAuthState(auth);
+
+  const logout = () => {
+    signOut(auth);
+  };
+
+  const menuOption1 = (
     <>
       <li>
-        <a>ShopNow</a>
+        <Link to="/">ShopNow</Link>
       </li>
       {/* <li tabindex="0">
-  <a>Parent</a>
+  <Link to='/'>Parent</Link>
   <ul class="p-2">
     <li>
 
     purchase;  Dashboard= My Orders, Add Review; Admin=Manage All Orders, Add A Product, Make Admin, Manage Products; login/SignUp MyProfile
-      <a>Submenu 1</a>
+      <Link to='/'>Submenu 1</Link>
     </li>
     <li>
-      <a>Submenu 2</a>
+      <Link to='/'>Submenu 2</Link>
     </li>
   </ul> 
 </li>*/}
       <li>
-        <a>purchase</a>
+        <Link to="/">purchase</Link>
       </li>
       <li>
-        <a>Dashboard</a>
+        <Link to="/">Dashboard</Link>
       </li>
       <li>
-        <a>Admin</a>
+        <Link to="/">Admin</Link>
       </li>
       <li>
-        <a>Blogs</a>
+        <Link to="/">Blogs</Link>
       </li>
       <li>
-        <a>About-Us</a>
+        <Link to="/">About-Us</Link>
       </li>
     </>
   );
-  const manuOptionProfile = (
+  const menuOptionProfile = (
     <>
       <li>
-        <a href="/#">View profile</a>
+        <Link to="/" href="/#">
+          View profile
+        </Link>
       </li>
       <li>
-        <a href="/#">Update profile </a>
+        <Link to="/" href="/#">
+          Update profile{" "}
+        </Link>
       </li>
       <li>
-        <a href="/#">View profile </a>
+        <Link to="/" href="/#">
+          View profile{" "}
+        </Link>
       </li>
       <li>
-        <a href="/#"> LogOut</a>
+        <button onClick={logout} className="">
+          LogOut
+        </button>
       </li>
     </>
   );
 
-  const manuOptionDropdown = (
+  const menuOptionDropdown = (
     <>
-      {manuOption1}
+      {menuOption1}
 
       <li class="dropdown dropdown-down dropdown-hover ">
         <label tabindex="0" class=" m-1">
@@ -65,42 +84,51 @@ const Navbar = () => {
           tabindex="0"
           class="dropdown-content menu mt-11 sm:-mt-2 shadow w-52 -left-[12px] sm:-left-[205px]  bg-slate-200"
         >
-          {manuOptionProfile}
+          {menuOptionProfile}
         </ul>
       </li>
     </>
   );
 
-  // const manuOption4 = <></>;
+  // const menuOption4 = <></>;
 
   return (
     <div class="navbar font-semibold bg-gray-100 px-5 sm:px-10 lg:px-20">
       {/*  */}
       <div class="navbar-start">
-        <a href="/" class=" normal-case text-xl">
-          Manufacturer Project
-        </a>
+        <Link to="/" href="/" class=" normal-case text-xl">
+          <img src={logo} alt="" className="w-20" />
+        </Link>
       </div>
 
       {/*  */}
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal gap-1 p-0">{manuOption1}</ul>
+        <ul class="menu menu-horizontal gap-1 p-0">{menuOption1}</ul>
       </div>
 
       {/*  */}
       <div class="navbar-end">
-        {/*  */}
-        <div class=" hidden lg:flex dropdown dropdown-hover dropdown-end">
-          <label tabindex="8" class="btn btn-ghost">
-            Profile
-          </label>
-          <ul
-            tabindex="8"
-            class="menu menu-compact dropdown-content mt-12 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
-          >
-            {manuOptionProfile}
-          </ul>
-        </div>
+        {user ? (
+          <>
+            <div class=" hidden lg:flex dropdown dropdown-hover dropdown-end">
+              <label tabindex="8" class="btn btn-ghost">
+                Profile
+              </label>
+              <ul
+                tabindex="8"
+                class="menu menu-compact dropdown-content mt-12 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
+              >
+                {menuOptionProfile}
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <button className=" text-success hover:text-green-600">
+              <Link to="/login"> LogIn/Register</Link>
+            </button>
+          </>
+        )}
 
         {/*  */}
         <div>
@@ -112,7 +140,7 @@ const Navbar = () => {
               tabindex="0"
               class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-1"
             >
-              {manuOptionDropdown}
+              {menuOptionDropdown}
             </ul>
           </div>
         </div>

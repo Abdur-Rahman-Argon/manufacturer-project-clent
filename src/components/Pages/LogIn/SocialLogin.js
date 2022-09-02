@@ -7,9 +7,9 @@ const SocialLogin = () => {
   const [signInWithGoogle, gUser, loading, error] = useSignInWithGoogle(auth);
   const [user] = useAuthState(auth);
 
-  if (user || gUser) {
-    console.log(user, gUser);
-  }
+  //   if (user || gUser) {
+  //     console.log(user, gUser);
+  //   }
 
   return (
     <div className=" text-center">
