@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
@@ -35,7 +36,7 @@ const Login = () => {
               <div class="div relative">
                 <input
                   type="password"
-                  placeholder="User Email"
+                  placeholder="User Password"
                   class=" pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered  border-gray-400 border-b-2 focus:outline-none focus:border-b-success w-full"
                   required
                 />
@@ -60,10 +61,13 @@ const Login = () => {
 
           <div className=" my-3 font-semibold">
             <p>
-              Not Register
-              <span className=" my-3 font-bold mx-1 text-success cursor-pointer">
+              Not Register?
+              <Link
+                to="/signup"
+                className=" my-3 font-bold mx-1 text-success cursor-pointer"
+              >
                 Register Now
-              </span>
+              </Link>
             </p>
           </div>
 
