@@ -12,7 +12,7 @@ const Footer = () => {
       <footer class="footer p-10 text-base-content">
         <div>
           <div className="">
-            <Link to="/" href="/" class="flex items-end normal-case text-xl">
+            <Link to="/#" class="flex items-end normal-case text-xl">
               <img src={logo} alt="" className="w-20" />
 
               <span className=" hover:text-green-600 text-green-600  -ml-2 text-[20px] font-semibold -mb-[2px]">
