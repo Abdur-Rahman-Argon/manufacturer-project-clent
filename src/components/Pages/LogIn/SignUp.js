@@ -13,6 +13,10 @@ const SignUp = () => {
   const [imgUrl, setImgUrl] = useState(profile);
   const [imageUrl, setImageUrl] = useState();
   const [fromData, setFromData] = useState();
+  const [Name, setName] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passFocus, setPassFocus] = useState(false);
+  const [passCFocus, setPassCFocus] = useState(false);
 
   const [createUserWithEmailAndPassword, CrUser, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
@@ -96,6 +100,8 @@ const SignUp = () => {
               <div class="div relative">
                 <input
                   type="text"
+                  onFocus={() => setName(true)}
+                  onBlurCapture={() => setName(false)}
                   placeholder="User Name"
                   {...register("userName", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
@@ -104,12 +110,16 @@ const SignUp = () => {
                       : "border-gray-400"
                   }`}
                 />
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.userName?.type ? "text-red-600" : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
-                    class={`fas fa-user text-[16px]${
-                      errors.userName?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
+                    class={`fas fa-user text-[16px] ${
+                      Name && " text-success"
+                    } ${
+                      errors.userName?.type === "required" && "text-red-600"
                     }`}
                   ></i>
                 </div>
@@ -119,11 +129,13 @@ const SignUp = () => {
             <div class=" my-6">
               <div class="div relative">
                 <input
-                  type="text"
+                  type="email"
+                  onFocus={() => setEmailFocus(true)}
+                  onBlurCapture={() => setEmailFocus(false)}
                   placeholder="User Email"
                   {...register("userEmail", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
-                    errors.userEmail?.type === "required"
+                    errors.userEmail?.type
                       ? "border-red-600"
                       : "border-gray-400"
                   }`}
@@ -132,12 +144,16 @@ const SignUp = () => {
                   {errors.password?.type === "required" &&
                     "password is required"}
                 </p> */}
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.userEmail?.type ? "text-red-600" : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
                     class={` fa-sharp fa-solid fa-envelope text-[16px] ${
-                      errors.userEmail?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
+                      emailFocus && " text-success"
+                    }  ${
+                      errors.userEmail?.type === "required" && "text-red-600"
                     }`}
                   ></i>
                 </div>
@@ -148,6 +164,8 @@ const SignUp = () => {
               <div class="div relative">
                 <input
                   type="password"
+                  onFocus={() => setPassFocus(true)}
+                  onBlurCapture={() => setPassFocus(false)}
                   placeholder="Type Password"
                   {...register("password", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
@@ -156,12 +174,16 @@ const SignUp = () => {
                       : "border-gray-400"
                   }`}
                 />
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.password?.type ? "text-red-600" : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
                     class={`fas fa-lock text-[16px] ${
-                      errors.password?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
+                      passFocus && " text-success"
+                    } ${
+                      errors.password?.type === "required" && "text-red-600"
                     }`}
                   ></i>
                 </div>
@@ -172,6 +194,8 @@ const SignUp = () => {
               <div class="div relative">
                 <input
                   type="password"
+                  onFocus={() => setPassCFocus(true)}
+                  onBlurCapture={() => setPassCFocus(false)}
                   placeholder="Confirm Password"
                   {...register("confirmPassword", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
@@ -180,12 +204,19 @@ const SignUp = () => {
                       : "border-gray-400"
                   }`}
                 />
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.confirmPassword?.type
+                      ? "text-red-600"
+                      : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
                     class={`fas fa-lock text-[16px] ${
-                      errors.confirmPassword?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
+                      passCFocus && " text-success"
+                    } ${
+                      errors.confirmPassword?.type === "required" &&
+                      "text-red-600"
                     }`}
                   ></i>
                 </div>

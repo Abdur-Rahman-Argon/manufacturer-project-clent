@@ -59,12 +59,12 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/" href="/#">
-          Update profile{" "}
+          Update profile
         </Link>
       </li>
       <li>
         <Link to="/" href="/#">
-          View profile{" "}
+          My Orders
         </Link>
       </li>
       <li>
@@ -96,11 +96,13 @@ const Navbar = () => {
   // const menuOption4 = <></>;
 
   return (
-    <div class="navbar font-semibold bg-slate-300 px-5 sm:px-10 lg:px-20">
-      {/*  */}
+    <div class="navbar font-semibold text-black bg-yellow-300 px-5 sm:px-10 lg:px-20">
       <div class="navbar-start">
-        <Link to="/" href="/" class=" normal-case text-xl">
+        <Link to="/" href="/" class=" flex items-end normal-case text-xl">
           <img src={logo} alt="" className="w-16" />
+          <span className=" hover:text-green-600 text-green-600 uppercase -ml-[7px] text-[14px] font-semibold  -mb-[6px]">
+            Industries Ltd.
+          </span>
         </Link>
       </div>
 

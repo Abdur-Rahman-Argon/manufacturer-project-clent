@@ -1,13 +1,22 @@
 import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useState } from "react";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passFocus, setPassFocus] = useState(false);
+
+  const [signInWithEmailAndPassword, LUser, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [user] = useAuthState(auth);
 
   const {
     register,
@@ -16,6 +25,10 @@ const Login = () => {
   } = useForm();
 
   const navigate = useNavigate();
+
+  if (user) {
+    navigate("/");
+  }
 
   const onSubmit = (data) => {
     console.log(data);
@@ -45,6 +58,8 @@ const Login = () => {
               <div class="div relative">
                 <input
                   type="email"
+                  onFocus={() => setEmailFocus(true)}
+                  onBlurCapture={() => setEmailFocus(false)}
                   placeholder="User Email"
                   {...register("userEmail", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
@@ -57,12 +72,16 @@ const Login = () => {
                   {errors.userEmail?.type === "required" &&
                     "User Email is required"}
                 </p> */}
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.userEmail?.type ? "text-red-600" : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
-                    class={` fa-sharp fa-solid fa-envelope text-[16px] ${
-                      errors.userEmail?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
+                    class={` fa-sharp fa-solid fa-envelope text-[16px]   ${
+                      emailFocus && " text-success"
+                    }   ${
+                      errors.userEmail?.type === "required" && "text-red-600"
                     }`}
                   ></i>
                 </div>
@@ -72,6 +91,8 @@ const Login = () => {
               <div class="div relative">
                 <input
                   type="password"
+                  onFocus={() => setPassFocus(true)}
+                  onBlurCapture={() => setPassFocus(false)}
                   placeholder="User Password"
                   {...register("password", { required: true })}
                   class={`pl-10 py-1 text-gray-500 text-[16px] font-semibold input-bordered   border-b-2 focus:outline-none focus:border-b-success w-full ${
@@ -84,20 +105,24 @@ const Login = () => {
                   {errors.password?.type === "required" &&
                     "password is required"}
                 </p> */}
-                <div class=" absolute top-2 left-3">
+                <div
+                  class={`${
+                    errors.password?.type ? "text-red-600" : "border-gray-400"
+                  } absolute top-2 left-3 `}
+                >
                   <i
-                    class={`fas fa-lock text-[16px] ${
-                      errors.password?.type === "required"
-                        ? "text-red-600"
-                        : "text-gray-600"
-                    }`}
+                    class={`fas fa-lock text-[16px]    c  ${
+                      passFocus && " text-success"
+                    } `}
                   ></i>
                 </div>
               </div>
             </div>
 
             <div class="my-3 text-right font-medium text-gray-400">
-              <a href="#">Forgot Password?</a>
+              <a href="#" className=" hover:text-success">
+                Forgot Password?
+              </a>
             </div>
 
             <div>
