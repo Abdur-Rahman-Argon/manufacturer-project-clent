@@ -46,11 +46,11 @@ const HomeProduct = () => {
             </p>
           </div> */}
           <div className=" flex justify-between text-center">
-            <button className=" btn btn-sm  border-0 hover:bg-green-600 m-2  bg-green-700">
+            <button className=" btn btn-sm  m-2  border-0 text-white bg-orange-400 hover:bg-orange-500">
               Order Now
             </button>
 
-            <button className=" btn btn-sm  border-0 hover:bg-green-600 m-2  bg-green-700">
+            <button className=" btn btn-sm  m-2  border-0 text-white bg-orange-400 hover:bg-orange-500">
               Add to Cart
             </button>
           </div>

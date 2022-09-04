@@ -8,7 +8,7 @@ import twitter from "./../../../images/twitter.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#222525]  mt-20 ">
+    <footer className="bg-[#222525]  mt-2 ">
       <footer class="footer p-10 text-white">
         <div>
           <div className="">
@@ -51,7 +51,7 @@ const Footer = () => {
                   placeholder="username@site.com"
                   class="input input-bordered w-full pr-16 focus:outline-none"
                 />
-                <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">
+                <button class=" px-4 py-[14px] rounded-md text-white bg-orange-500 hover:bg-orange-600 absolute top-0 right-0 rounded-l-none">
                   Subscribe
                 </button>
               </div>

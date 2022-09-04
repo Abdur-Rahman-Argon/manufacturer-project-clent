@@ -57,8 +57,8 @@ const GetInTouch = () => {
           </div>
 
           {/*  */}
-          <div className=" mt-5 lg:mb-14 text-left font-medium">
-            <button class="btn btn-sm bg-green-700 hover:bg-green-800 border-0">
+          <div className="  lg:mb-14 text-left font-medium">
+            <button class="btn btn-sm bg-orange-400 hover:bg-orange-500 border-0">
               Send Now <i class="fa-solid fa-paper-plane ml-3"></i>
             </button>
           </div>

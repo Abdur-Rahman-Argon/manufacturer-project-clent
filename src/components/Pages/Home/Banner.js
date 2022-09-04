@@ -23,7 +23,7 @@ const Banner = () => {
             FOR ALL POWER TOOLS
           </h2>
 
-          <button className="btn px-8 my-5 text-black bg-white hover:bg-orange-500">
+          <button className="btn px-8 my-5 text-white bg-orange-400 hover:bg-orange-500 ">
             Shop Now
           </button>
         </div>
