@@ -11,6 +11,9 @@ const Banner = () => {
             alt=""
           />
         </div>
+
+        {/* <div className="title1 p-32 top-0 left-0 absolute bg-gradient-to-r from-[#0a0e0d]  text-white"></div> */}
+
         <div className="title1 top-28 left-32 absolute text-white">
           <h3 className=" text-2xl font-semibold">
             BEST DISCOUNT UP TO 25% OFF
