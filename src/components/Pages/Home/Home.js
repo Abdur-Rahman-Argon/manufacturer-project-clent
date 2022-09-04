@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import Delivery from "./Delivery";
 import GetInTouch from "./GetInTouch";
 import OfficeLocation from "./OfficeLocation";
 import Reviews from "./Reviews";
@@ -10,6 +11,10 @@ const Home = () => {
     <div>
       <section>
         <Banner></Banner>
+      </section>
+
+      <section>
+        <Delivery></Delivery>
       </section>
 
       <section className=" px-10 my-12">

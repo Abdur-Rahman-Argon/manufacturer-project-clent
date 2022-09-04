@@ -100,7 +100,7 @@ const Navbar = () => {
       <div class="navbar-start">
         <Link to="/" href="/" class=" flex items-end normal-case text-xl">
           <img src={logo} alt="" className="w-16" />
-          <span className=" hover:text-green-600 text-green-600 uppercase -ml-[7px] text-[14px] font-semibold  -mb-[6px]">
+          <span className=" hover:text-green-700 text-green-600 uppercase -ml-[7px] text-[14px] font-bold  -mb-[6px]">
             Industries Ltd.
           </span>
         </Link>
@@ -132,7 +132,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <button className=" text-success hover:text-green-600">
+            <button className=" text-green-600 hover:text-green-700">
               <Link to="/login"> LogIn/Register</Link>
             </button>
           </>

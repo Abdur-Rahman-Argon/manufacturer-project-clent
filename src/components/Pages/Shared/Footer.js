@@ -8,14 +8,14 @@ import twitter from "./../../../images/twitter.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-300 mt-20 ">
-      <footer class="footer p-10 text-base-content">
+    <footer className="bg-[#222525]  mt-20 ">
+      <footer class="footer p-10 text-white">
         <div>
           <div className="">
-            <Link to="/#" class="flex items-end normal-case text-xl">
+            <Link to="/#" class="flex items-end normal-case  text-xl">
               <img src={logo} alt="" className="w-20" />
 
-              <span className=" hover:text-green-600 text-green-600  -ml-2 text-[20px] font-semibold -mb-[2px]">
+              <span className=" hover:text-green-700 text-green-600  -ml-2 text-[20px] font-bold -mb-[2px]">
                 Industries Ltd.
               </span>
             </Link>
@@ -26,7 +26,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className=" font-semibold">
+        <div className=" font-semibold text-white">
           <span class="footer-title">Services</span>
           <a class="link link-hover">Shop Now</a>
           <a class="link link-hover">All Product</a>
@@ -73,8 +73,8 @@ const Footer = () => {
               <img src={twitter} alt="" className=" w-8" />
             </a>
 
-            <a href="/" className=" ">
-              <img src={github} alt="" className=" w-8" />
+            <a href="/" className=" bg-white w-8 rounded-full overflow-hidden ">
+              <img src={github} alt="" className=" w-full scale-110  " />
             </a>
           </div>
         </div>
