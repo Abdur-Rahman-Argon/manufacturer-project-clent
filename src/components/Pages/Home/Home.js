@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import GetInTouch from "./GetInTouch";
 import Reviews from "./Reviews";
 import SpecialProduct from "./SpecialProduct";
 
@@ -86,13 +87,13 @@ const Home = () => {
 
       {/*  */}
       <section className=" px-10 my-12">
-        <div className=" ">
-          <h1 className="uppercase text-2xl text-left title1 font-semibold ">
-            GET IN TOUCH
-          </h1>
-          {/* <div className=" text-4xl flex gap-10 my-3">
-            <span>{"<"}</span> <span>{">"}</span>
-          </div> */}
+        <div className=" flex flex-col gap-3 lg:flex-row ">
+          <div className=" flex-1">
+            <GetInTouch></GetInTouch>
+          </div>
+          <div className=" flex-1">
+            <GetInTouch></GetInTouch>
+          </div>
         </div>
       </section>
     </div>
