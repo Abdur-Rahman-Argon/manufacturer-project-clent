@@ -78,18 +78,25 @@ const Navbar = () => {
   const menuOptionDropdown = (
     <>
       {menuOption1}
-
-      <li class="dropdown dropdown-down dropdown-hover ">
-        <label tabindex="0" class=" m-1">
-          <img src={profile} className="rounded-full" alt="" />
-        </label>
-        <ul
-          tabindex="0"
-          class="dropdown-content menu mt-11 sm:-mt-2 shadow w-52 -left-[12px] sm:-left-[205px]  bg-slate-200"
-        >
-          {menuOptionProfile}
-        </ul>
-      </li>
+      {user ? (
+        <li class="dropdown dropdown-down dropdown-hover ">
+          <label tabindex="0" class=" m-1">
+            <img src={profile} className="rounded-full w-7 sm:w-10" alt="" />
+          </label>
+          <ul
+            tabindex="0"
+            class="dropdown-content menu mt-11 sm:-mt-2 shadow w-52 -left-[12px] sm:-left-[205px]  bg-slate-200"
+          >
+            {menuOptionProfile}
+          </ul>
+        </li>
+      ) : (
+        <>
+          <button className="  lg:hidden flex pl-4 text-green-600 hover:text-green-700">
+            <Link to="/login"> LogIn/Register</Link>
+          </button>
+        </>
+      )}
     </>
   );
 
@@ -97,7 +104,7 @@ const Navbar = () => {
 
   return (
     <div class="navbar font-semibold text-black bg-yellow-300 px-5 sm:px-10 lg:px-20">
-      <div class="navbar-start">
+      <div class="navbar-start w-48 sm:w-full">
         <Link to="/" href="/" class=" flex items-end normal-case text-xl">
           <img src={logo} alt="" className="w-16" />
           <span className=" hover:text-green-700 text-green-600 uppercase -ml-[7px] text-[14px] font-bold  -mb-[6px]">
@@ -112,14 +119,11 @@ const Navbar = () => {
       </div>
 
       {/*  */}
-      <div class="navbar-end">
+      <div class="navbar-end ">
         {user ? (
           <>
             <div class=" hidden lg:flex dropdown dropdown-hover dropdown-end">
-              <label
-                tabindex="8"
-                class=" btn btn-ghost hover:bg-slate-300 pl-14"
-              >
+              <label tabindex="8" class=" py-3 pl-5">
                 <img src={profile} className="rounded-full w-7" alt="" />
               </label>
               <ul
@@ -132,7 +136,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <button className=" text-green-600 hover:text-green-700">
+            <button className="  hidden lg:flex text-green-600 hover:text-green-700">
               <Link to="/login"> LogIn/Register</Link>
             </button>
           </>
@@ -142,7 +146,7 @@ const Navbar = () => {
         <div>
           <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
-              menu
+              <i class="fa-solid fa-bars"></i>
             </label>
             <ul
               tabindex="0"

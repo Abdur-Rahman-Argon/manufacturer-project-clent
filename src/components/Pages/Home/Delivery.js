@@ -2,7 +2,7 @@ import React from "react";
 
 const Delivery = () => {
   return (
-    <div className=" grid grid-cols-2 lg:grid-cols-4 px-10 mt-8 gap-8">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-10 mt-8 gap-8">
       <div className=" bg-slate-300 rounded-md w-72 p-5 flex items-center justify-center gap-8 shadow-lg">
         <div>
           <span className="">

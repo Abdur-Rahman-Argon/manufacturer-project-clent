@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex flex-col sm:flex-row justify-center  px-10 sm:px-32 lg:px-10 ">
+    <div className=" flex flex-col sm:flex-row justify-center  px-10 lg:px-10 ">
       <div className="lg:flex-1 lg:flex hidden">
         <img
           src="https://www.cssscript.com/demo/login-page-template/img/bg.svg"

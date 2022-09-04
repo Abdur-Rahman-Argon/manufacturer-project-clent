@@ -67,7 +67,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className=" flex flex-col sm:flex-row-reverse justify-center  px-10 sm:px-32 lg:px-10 ">
+    <div className=" flex flex-col sm:flex-row-reverse justify-center  px-10 lg:px-10 ">
       <div className="lg:flex-1 lg:flex hidden">
         <img
           src={"https://www.cssscript.com/demo/login-page-template/img/bg.svg"}
@@ -92,7 +92,7 @@ const SignUp = () => {
                   <input
                     type="file"
                     onChange={onImageChange}
-                    className="absolute scale-150 opacity-0"
+                    className="absolute w-full lg:scale-150 opacity-0"
                   />
                 </div>
               </div>
