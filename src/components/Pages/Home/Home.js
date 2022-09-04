@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "./Banner";
 import GetInTouch from "./GetInTouch";
+import OfficeLocation from "./OfficeLocation";
 import Reviews from "./Reviews";
 import SpecialProduct from "./SpecialProduct";
 
@@ -25,7 +26,8 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className=" px-10 flex flex-wrap gap-10">
+        <div className=" px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
@@ -46,7 +48,8 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className=" px-10 flex flex-wrap gap-10">
+        <div className=" px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
           <SpecialProduct></SpecialProduct>
@@ -55,7 +58,7 @@ const Home = () => {
 
       {/*  */}
       <section className=" px-10 my-12">
-        <div className=" flex justify-between border-b-2 border-orange-400">
+        <div className=" flex justify-between items-center border-b-2 border-orange-400">
           <h1 className="uppercase text-2xl text-left title1 font-semibold ">
             WHAT OUR CUSTOMERS SAY
           </h1>
@@ -92,7 +95,7 @@ const Home = () => {
             <GetInTouch></GetInTouch>
           </div>
           <div className=" flex-1">
-            <GetInTouch></GetInTouch>
+            <OfficeLocation></OfficeLocation>
           </div>
         </div>
       </section>
