@@ -34,19 +34,19 @@ const Navbar = () => {
 </li>*/}
 
       <li>
-        <Link to="/parches">Purchase</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
-        <Link to="/Dashboard">Dashboard</Link>
+        <Link to="/admin">Admin</Link>
       </li>
       <li>
-        <Link to="/">Admin</Link>
-      </li>
-      <li>
-        <Link to="/parches/:id">Blogs</Link>
+        <Link to="/Blogs">Blogs</Link>
       </li>
       <li>
         <Link to="/">About-Us</Link>
+      </li>
+      <li>
+        <Link to="/">Contact-Us</Link>
       </li>
     </>
   );

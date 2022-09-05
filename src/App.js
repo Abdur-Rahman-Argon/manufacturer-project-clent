@@ -26,10 +26,10 @@ function App() {
         <Route path="/allTools" element={<AllTools />}></Route>
         <Route path="/toolsDetails/:toolsId" element={<ToolsDetails />}></Route>
         <Route path="/parches/:parchesId" element={<Parches />}></Route>
-        <Route path="/Dashboard" element={<Dashboard></Dashboard>}>
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
           <Route index element={<MyOrder></MyOrder>}></Route>
-          <Route to="addReview" element={<AddReview></AddReview>}></Route>
-          <Route to="payment/:id" element={<Payment></Payment>}></Route>
+          <Route path="addReview" element={<AddReview></AddReview>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
         </Route>
       </Routes>
 

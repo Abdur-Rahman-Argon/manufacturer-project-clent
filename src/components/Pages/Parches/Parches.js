@@ -45,6 +45,8 @@ const Parches = () => {
     delivered,
   } = tools;
 
+  const parchesDate = new Date().toString().slice(0, 16);
+
   const addValue = (e) => {
     const num = e.target.value;
     setCountity(num);
@@ -74,6 +76,8 @@ const Parches = () => {
       customerPhone: data.phoneNumber,
       shippingAddress: ` ${data.address} ,  zipCode: ${data.zipCode} , ${data.city} , ${data.country},`,
       orderInfo: tools,
+      quantity: countity,
+      parchesDate: parchesDate,
     };
 
     fetch(`http://localhost:5000/orders`, {

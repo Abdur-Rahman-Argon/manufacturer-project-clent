@@ -10,7 +10,7 @@ const useTools = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setTools(data);
       });
   }, []);
