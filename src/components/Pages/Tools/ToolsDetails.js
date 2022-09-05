@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { Link, useParams } from "react-router-dom";
+import Loading from "../Shared/Loading";
 
 const ToolsDetails = () => {
   const { toolsId } = useParams();
@@ -18,7 +19,7 @@ const ToolsDetails = () => {
   );
 
   if (isLoading) {
-    return;
+    return <Loading></Loading>;
   }
 
   const {

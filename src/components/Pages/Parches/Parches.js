@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "../Shared/Loading";
 
 const Parches = () => {
   const { parchesId } = useParams();
@@ -30,7 +31,7 @@ const Parches = () => {
   );
 
   if (isLoading) {
-    return;
+    return <Loading></Loading>;
   }
 
   const {
