@@ -16,7 +16,7 @@ const Navbar = () => {
   const menuOption1 = (
     <>
       <li>
-        <Link to="/">ShopNow</Link>
+        <Link to="/allTools">All-Tools</Link>
       </li>
 
       {/* <li tabindex="0">
@@ -34,16 +34,16 @@ const Navbar = () => {
 </li>*/}
 
       <li>
-        <Link to="/">Purchase</Link>
+        <Link to="/parches">Purchase</Link>
       </li>
       <li>
-        <Link to="/">Dashboard</Link>
+        <Link to="/Dashboard">Dashboard</Link>
       </li>
       <li>
         <Link to="/">Admin</Link>
       </li>
       <li>
-        <Link to="/">Blogs</Link>
+        <Link to="/parches/:id">Blogs</Link>
       </li>
       <li>
         <Link to="/">About-Us</Link>
