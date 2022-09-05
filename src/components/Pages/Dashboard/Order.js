@@ -17,26 +17,22 @@ const Order = ({ orders }) => {
   };
 
   return (
-    <div className="  shadow-md rounded-lg border-[1px] border-gray-100 w-full">
+    <div className="  shadow-md rounded-lg border-[1px] border-gray-100 py-5 w-full">
       <div className=" grid grid-cols-1 md:grid-cols-3 items-center">
         <div className=" flex flex-col md:flex-row items-center mx-10 gap-8">
           <div>
-            <img
-              src="https://cdn.shopify.com/s/files/1/0635/8315/8519/products/12_a3e01afa-332d-4266-b20d-3064f8475840_287x.jpg?v=1648530423"
-              className=" w-28"
-              alt=""
-            />
+            <img src={orders.orderInfo.image} className=" w-28" alt="" />
           </div>
           <div>
-            <h1 className=" text-xl font-bold"> product Name </h1>
+            <h1 className=" text-lg font-bold">{orders.orderInfo.titleName}</h1>
             <h1 className=" text-sm my-1 font-semibold">
-              <span className=" font-bold text-base"> Price:</span>{" "}
-              <span>${"25"} </span>
+              <span className="mr-2 font-bold text-base"> Price:</span>
+              <span>{orders.orderInfo.price} </span>
             </h1>
 
             <h1 className=" text-sm my-1 font-semibold">
-              <span className=" font-bold text-base"> Quantity:</span>{" "}
-              <span>{"25"} </span>
+              <span className=" font-bold text-base mr-2"> Quantity:</span>
+              <span>{orders.orderInfo.quantity} </span>
             </h1>
           </div>
         </div>
@@ -70,11 +66,13 @@ const Order = ({ orders }) => {
                 <span className=" font-semibold text-base">
                   Payment Status:
                 </span>
-                <span className=" title2 text-yellow-500 text-lg font-bold">
+                <span className=" mx-2 title2 text-gray-700 text-lg font-bold">
                   UnPaid
                 </span>
               </h1>
-              <button className="btn btn-success font-semibold">pay now</button>
+              <button className="btn my-5 btn-success font-semibold">
+                pay now
+              </button>
             </>
           )}
         </div>

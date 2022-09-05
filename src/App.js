@@ -13,6 +13,7 @@ import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import MyOrder from "./components/Pages/Dashboard/MyOrder";
 import AddReview from "./components/Pages/Dashboard/AddReview";
 import Payment from "./components/Pages/Dashboard/Payment";
+import NotFound from "./components/Pages/Shared/NotFound";
 
 function App() {
   return (
@@ -26,11 +27,14 @@ function App() {
         <Route path="/allTools" element={<AllTools />}></Route>
         <Route path="/toolsDetails/:toolsId" element={<ToolsDetails />}></Route>
         <Route path="/parches/:parchesId" element={<Parches />}></Route>
+
         <Route path="/dashboard" element={<Dashboard></Dashboard>}>
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
           <Route path="payment/:id" element={<Payment></Payment>}></Route>
         </Route>
+
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
       <Footer></Footer>
