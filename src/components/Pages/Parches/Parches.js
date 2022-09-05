@@ -7,6 +7,7 @@ import auth from "../../../firebase.init";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
+import { toast } from "react-toastify";
 
 const Parches = () => {
   const { parchesId } = useParams();
@@ -90,7 +91,8 @@ const Parches = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
+        toast.success(" Your Order send for processing");
       });
   };
 

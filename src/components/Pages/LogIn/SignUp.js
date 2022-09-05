@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import profile from "./../../../images/profileimg.png";
 import auth from "../../../firebase.init";
@@ -8,6 +8,7 @@ import {
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import Loading from "../Shared/Loading";
 
 const SignUp = () => {
   const [imgUrl, setImgUrl] = useState(profile);
@@ -18,10 +19,10 @@ const SignUp = () => {
   const [passFocus, setPassFocus] = useState(false);
   const [passCFocus, setPassCFocus] = useState(false);
 
-  const [createUserWithEmailAndPassword, CrUser, loading, error] =
+  const [createUserWithEmailAndPassword, CrUser, CLoading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const {
     register,
@@ -30,9 +31,15 @@ const SignUp = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
+  }
+
+  if ((loading, CLoading)) {
+    return <Loading></Loading>;
   }
 
   const imageStorageKey = "2380d2dfbb3a1a216d57453cbd4c3837";

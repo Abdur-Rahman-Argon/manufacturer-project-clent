@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase.init";
+import { toast } from "react-toastify";
 
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);
@@ -55,7 +56,7 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        toast.success(" Thanks for  your important review");
       });
   };
 

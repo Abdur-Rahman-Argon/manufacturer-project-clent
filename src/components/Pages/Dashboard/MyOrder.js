@@ -7,19 +7,20 @@ import Loading from "../Shared/Loading";
 import { useQuery } from "react-query";
 
 const MyOrder = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   const {
     data: myOrders,
     isLoading,
     error,
+    refetch,
   } = useQuery("orders", () =>
     fetch(`http://localhost:5000/orders/${user?.email}`).then((res) =>
       res.json()
     )
   );
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading></Loading>;
   }
 
@@ -29,7 +30,6 @@ const MyOrder = () => {
         {myOrders?.length === 0 ? (
           <>
             <h1 className="  text-3xl font-semibold text-center my-10">
-              {" "}
               You Have No Any Order
             </h1>
           </>
@@ -47,7 +47,7 @@ const MyOrder = () => {
         ) : (
           <>
             {myOrders?.map((orders) => (
-              <Order key={orders._id} orders={orders}></Order>
+              <Order key={orders._id} refetch={refetch} orders={orders}></Order>
             ))}
           </>
         )}

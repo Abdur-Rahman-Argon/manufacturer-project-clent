@@ -1,6 +1,7 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const Order = ({ orders }) => {
+const Order = ({ orders, refetch }) => {
   const paid = false;
 
   const removeOrder = (id) => {
@@ -12,7 +13,8 @@ const Order = ({ orders }) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        toast.error(" Your Order remove permanently");
+        refetch();
       });
   };
 
