@@ -31,13 +31,70 @@ const Payment = () => {
     return <Loading></Loading>;
   }
 
+  const SubPrice =
+    parseInt(myOrder.quantity) * parseInt(myOrder.orderInfo.price);
+  const totalPrice = parseInt(SubPrice + (SubPrice + 150) / 15);
+
   return (
     <div className="my-10">
-      <div></div>
-      <div>
-        <div></div>
-        <div>
-          <div className="card w-full md:w-[500px] mx-auto py-10  px-5 border-[1px] border-gray-100 bg-base-200 ">
+      <div className=" mx-10 p-8 border-2 rounded-xl shadow-2xl border-gray-200 flex flex-col lg:flex-row items-center justify-around">
+        <div className=" flex-1">
+          <div className=" my-5">
+            <h1 className=" flex justify-between text-2xl font-semibold">
+              {myOrder.orderInfo.titleName}
+            </h1>
+          </div>
+
+          {/*  */}
+          <div className=" my-1">
+            <h1 className=" flex justify-between text-lg font-semibold">
+              <span>Items Price :</span>
+              <span>{myOrder.orderInfo.price} $ </span>
+            </h1>
+          </div>
+
+          <div className=" my-1">
+            <h1 className=" flex justify-between text-lg font-semibold mr-3">
+              <span>Items Quantity :</span> {myOrder.quantity}
+            </h1>
+          </div>
+
+          <div className=" divider my-1"></div>
+
+          <div className=" my-1">
+            <h1 className=" flex justify-between text-lg font-semibold">
+              <span>SubTotal :</span>
+              <span>{SubPrice} $</span>
+            </h1>
+          </div>
+
+          <div className=" mt-8">
+            <h1 className=" flex justify-between text-lg font-semibold">
+              <span>Shipping Fee :</span>
+              <span> 150 $</span>
+            </h1>
+          </div>
+
+          <div className=" my-1">
+            <h1 className=" flex justify-between text-lg font-semibold">
+              <span>Tax Fee :</span> <span>15 %</span>
+            </h1>
+          </div>
+
+          <div className=" divider my-1"></div>
+
+          <div className=" my-1">
+            <h1 className=" flex justify-between text-lg font-semibold">
+              <span>Total Price :</span> <span>{totalPrice} $</span>
+            </h1>
+          </div>
+        </div>
+
+        <div class="divider lg:divider-horizontal"></div>
+
+        {/*  */}
+        <div className=" flex-1 w-full">
+          <div className="card w-full md:w-[500px] lg:w-full px-3  mx-auto py-10  px-5 border-[1px]   bg-base-200 ">
             <Elements stripe={stripePromise}>
               <PaymentCard myOrder={myOrder}></PaymentCard>
             </Elements>

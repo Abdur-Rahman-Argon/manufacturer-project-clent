@@ -14,7 +14,7 @@ const center = {
 function MyLocationMap() {
   return (
     <LoadScript googleMapsApiKey="AIzaSyATfJtnVOCzuVtUCkA2hJeamCADNdO80uY">
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={9}>
         {/* Child components, such as markers, info windows, etc. */}
         <>
           <p> Our Location</p>{" "}

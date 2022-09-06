@@ -21,7 +21,7 @@ const Dashboard = () => {
         </div>
         <div class="drawer-side">
           <label for="my-drawer-2" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-60 bg-slate-400 gap-2 text-black font-semibold text-lg">
+          <ul class="menu p-4 overflow-y-auto w-60 bg-slate-300 gap-2 text-black font-semibold text-lg">
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link to="/dashboard">
