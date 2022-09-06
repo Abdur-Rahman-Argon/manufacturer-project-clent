@@ -5,9 +5,14 @@ import auth from "../../../firebase.init";
 import { Link } from "react-router-dom";
 import logo from "./../../../images/ADM-Logo.png";
 import profile from "./../../../images/profileimg.png";
+import Loading from "./Loading";
 
 const Navbar = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   const logout = () => {
     signOut(auth);
@@ -81,7 +86,15 @@ const Navbar = () => {
       {user ? (
         <li class="dropdown dropdown-down dropdown-hover ">
           <label tabindex="0" class=" m-1">
-            <img src={profile} className="rounded-full w-7 sm:w-10" alt="" />
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                className="rounded-full w-16 sm:w-10"
+                alt=""
+              />
+            ) : (
+              <img src={profile} className="rounded-full w-7 sm:w-10" alt="" />
+            )}
           </label>
           <ul
             tabindex="0"
@@ -124,7 +137,19 @@ const Navbar = () => {
           <>
             <div class=" hidden lg:flex dropdown dropdown-hover dropdown-end">
               <label tabindex="8" class=" py-3 pl-5">
-                <img src={profile} className="rounded-full w-7" alt="" />
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    className="rounded-full w-20 sm:w-10"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src={profile}
+                    className="rounded-full w-7 sm:w-10"
+                    alt=""
+                  />
+                )}
               </label>
               <ul
                 tabindex="8"

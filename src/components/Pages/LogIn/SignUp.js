@@ -62,8 +62,10 @@ const SignUp = () => {
     const email = data.userEmail;
     const displayName = data.userName;
     const password = data.password;
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+
     fetch(url, {
       method: "POST",
       body: fromData,
@@ -79,7 +81,21 @@ const SignUp = () => {
           photoURL: result.data.display_url,
         };
 
-      
+        if (result.data.display_url) {
+          updateProfile({
+            displayName: displayName,
+            photoURL: result.data.display_url,
+          });
+
+          fetch(`http://localhost:5000/user/${email}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+        }
+      });
   };
 
   return (
