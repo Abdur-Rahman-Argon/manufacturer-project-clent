@@ -8,24 +8,25 @@ import { useQuery } from "react-query";
 
 const MyOrder = () => {
   const [user, loading] = useAuthState(auth);
+  const [myOrders] = useMyOrder(user);
 
-  const {
-    data: myOrders,
-    isLoading,
-    error,
-    refetch,
-  } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/orders/${user?.email}`).then((res) =>
-      res.json()
-    )
-  );
+  // const {
+  //   data: myOrders,
+  //   isLoading,
+  //   error,
+  //   refetch,
+  // } = useQuery("orders", () =>
+  //   fetch(`http://localhost:5000/orders/${user?.email}`).then((res) =>
+  //     res.json()
+  //   )
+  // );
 
-  if (isLoading || loading) {
-    return <Loading></Loading>;
-  }
+  // if (isLoading || loading) {
+  //   return <Loading></Loading>;
+  // }
 
   return (
-    <div>
+    <div className=" px-4 title1">
       <div>
         {myOrders?.length === 0 ? (
           <>
@@ -47,7 +48,7 @@ const MyOrder = () => {
         ) : (
           <>
             {myOrders?.map((orders) => (
-              <Order key={orders._id} refetch={refetch} orders={orders}></Order>
+              <Order key={orders._id} orders={orders}></Order>
             ))}
           </>
         )}

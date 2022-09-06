@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -20,6 +20,8 @@ const Parches = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const navigate = useNavigate();
 
   const {
     data: tools,
@@ -93,30 +95,67 @@ const Parches = () => {
       .then((result) => {
         // console.log(result);
         toast.success(" Your Order send for processing");
+        navigate("/dashboard");
       });
   };
 
   return (
     <div>
       <div className=" flex flex-col lg:flex-row items-center">
-        <div className=" flex-1 px-20 py-5  bg-base-100">
-          {/*  */}
+        <div className=" flex-1 px-20 py-5   bg-base-100">
           <div className=" mx-auto">
             {/*  */}
-            <div className=" my-2 ">
-              <h2 className="text-4xl my-5 font-[600]  text-orange-400">
+            <div className="">
+              <h2 className="text-3xl my-5 font-[700]  text-orange-400">
                 {tools.titleName}
               </h2>
             </div>
 
-            <div class="divider"></div>
+            <div class="divider my-0"></div>
 
             {/*  */}
-            <div className=" my-2 ">
-              <h2 className=" text-md font-semibold ">
-                <span className=" mr-2 text-xl text-gray-600 ">Price:</span>
+            <div className="w-full sm:flex items-center justify-between overflow-hidden gap-10 md:h-44 lg:h-32">
+              <div className=" flex-1 -mt-24 sm:-mt-16 lg:-mt-3 w-full mx-auto">
+                <img src={image} alt="" />
+              </div>
+
+              {/*  */}
+              <div className=" -mt-16 sm:mt-5 flex-1 flex items-center w-full px-4 my-8">
+                <div className=" flex items-center">
+                  <button
+                    disabled={countity == stock}
+                    className=" py-3 px-5 bg-slate-300  mr-2 rounded"
+                    onClick={addPositive}
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input
+                    onChange={addValue}
+                    type="number"
+                    name="quantity"
+                    value={countity}
+                    className="input focus:outline-none input-bordered  text-center font-semibold text-lg w-20 lg:w-24 md:w-32 mx-3 max-w-xs"
+                  />
+
+                  <button
+                    disabled={countity == minimumOrder}
+                    onClick={addNagetive}
+                    className=" py-3 px-5 bg-slate-300  mr-2 rounded"
+                  >
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider -mt-10 lg:mt-1"></div>
+
+            {/*  */}
+            <div className="">
+              <h2 className="  font-semibold ">
+                <span className=" mr-2 text-gray-600 ">Price:</span>
                 <span className=" mr-2 text-2xl mx-3">${price}.00</span>
-                <span className=" mr-2 text-xl text-gray-500 mx-3 line-through">
+                <span className=" mr-2 text-gray-500 mx-3 line-through">
                   ${"45"}.00
                 </span>
                 <span className="text-base font-bold text-gray-600">
@@ -127,38 +166,36 @@ const Parches = () => {
 
             <div class="divider"></div>
 
-            {/*  */}
-            <div className=" my-2 ">
-              <h2 className="  text-md font-semibold">
-                <span className=" mr-2 text-xl text-gray-600 ">Stock:</span>
-                {stock}
-              </h2>
-            </div>
+            <div className=" flex justify-between items-center">
+              {/*  */}
+              <div className="">
+                <h2 className="   font-semibold">
+                  <span className=" mr-2 text-gray-600 ">Stock:</span>
+                  {stock}
+                </h2>
+              </div>
 
-            {/*  */}
-            <div className=" my-4 ">
-              <h2 className="  text-md font-semibold">
-                <span className=" mr-2 text-xl text-gray-600 ">
-                  Delivered :
-                </span>
-                {delivered}
-              </h2>
-            </div>
+              {/*  */}
+              <div className="">
+                <h2 className="   font-semibold">
+                  <span className=" mr-2 text-gray-600 ">Delivered :</span>
+                  {delivered}
+                </h2>
+              </div>
 
-            <div className=" my-2 ">
-              <h2 className="  text-md font-semibold">
-                <span className=" mr-2 text-xl text-gray-600 ">
-                  MinimumOrder:
-                </span>
-                {minimumOrder}
-              </h2>
+              <div className="">
+                <h2 className="   font-semibold">
+                  <span className=" mr-2 text-gray-600 ">MinimumOrder:</span>
+                  {minimumOrder}
+                </h2>
+              </div>
             </div>
 
             <div class="divider"></div>
 
-            <div className=" my-2 ">
-              <p className=" text-[16px] font-medium">
-                <span className="  mr-2 text-xl text-gray-600 ">
+            <div className="">
+              <p className=" text-[14px] font-medium">
+                <span className="  mr-2 font-bold text-gray-600 ">
                   Description:
                 </span>
                 {"description"} Lorem ipsum dolor sit, amet consectetur
@@ -168,40 +205,18 @@ const Parches = () => {
             </div>
 
             <div class="divider"></div>
-
-            <div className=" flex items-center w-full px-4 my-8">
-              <div className=" flex items-center">
-                <button
-                  disabled={countity == stock}
-                  className=" py-3 px-5 bg-slate-300  mr-2 text-xl rounded"
-                  onClick={addPositive}
-                >
-                  <i class="fa-solid fa-plus"></i>
-                </button>
-                <input
-                  onChange={addValue}
-                  type="number"
-                  name="quantity"
-                  value={countity}
-                  className="input focus:outline-none input-bordered  text-center font-semibold text-lg w-32 mx-3 max-w-xs"
-                />
-
-                <button
-                  disabled={countity == minimumOrder}
-                  onClick={addNagetive}
-                  className=" py-3 px-5 bg-slate-300  mr-2 text-xl rounded"
-                >
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
         {/*  */}
-        <div className=" flex-1 px-8 bg-base-100">
+        <div className=" flex-1 w-full px-20 bg-base-100">
+          <div>
+            <h1 className=" text-xl text-center lg:text-left font-bold my-5">
+              Please Fill your Shipping Information
+            </h1>
+          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className=" w-full lg:flex-row justify-between">
+            <div className="   lg:flex-row justify-between">
               <div>
                 <label class="label">
                   <span class="label-text font-medium">Full name:</span>
@@ -211,7 +226,7 @@ const Parches = () => {
                   placeholder="Full Name"
                   value={user.displayName}
                   {...register("fullName", { required: true })}
-                  class="border p-2 border-gray-300 rounded-md focus:outline-none w-full"
+                  class="border p-2  font-bold  border-gray-300 rounded-md focus:outline-none w-full"
                   readOnly
                 />
               </div>
@@ -226,7 +241,7 @@ const Parches = () => {
                   placeholder="Email"
                   value={user.email}
                   {...register("email", { required: true })}
-                  class="border p-2 w-full  border-gray-300 rounded-md focus:outline-none "
+                  class="border p-2 w-full font-bold  border-gray-300 rounded-md focus:outline-none "
                   readOnly
                 />
               </div>
@@ -234,9 +249,7 @@ const Parches = () => {
                 <label class="label">
                   <span class="label-text font-medium">
                     Phone Number:
-                    <span className=" text-red-500 text-xl font-semibold">
-                      *
-                    </span>
+                    <span className=" text-red-500 font-semibold">*</span>
                   </span>
                 </label>
                 <input
@@ -252,9 +265,7 @@ const Parches = () => {
                 <label class="label">
                   <span class="label-text font-medium">
                     Country:
-                    <span className=" text-red-500 text-xl font-semibold">
-                      *
-                    </span>
+                    <span className=" text-red-500 font-semibold">*</span>
                   </span>
                 </label>
                 <input
@@ -268,9 +279,7 @@ const Parches = () => {
                 <label class="label">
                   <span class="label-text font-medium">
                     City:
-                    <span className=" text-red-500 text-xl font-semibold">
-                      *
-                    </span>
+                    <span className=" text-red-500 font-semibold">*</span>
                   </span>
                 </label>
                 <input
@@ -285,9 +294,7 @@ const Parches = () => {
                 <label class="label">
                   <span class="label-text font-medium">
                     Zip Code:
-                    <span className=" text-red-500 text-xl font-semibold">
-                      *
-                    </span>
+                    <span className=" text-red-500 font-semibold">*</span>
                   </span>
                 </label>
                 <input
@@ -302,7 +309,7 @@ const Parches = () => {
               <label class="label">
                 <span class="label-text font-medium">
                   Shipping Address:
-                  <span className=" text-red-500 text-xl font-semibold">*</span>
+                  <span className=" text-red-500 font-semibold">*</span>
                 </span>
               </label>
               <textarea

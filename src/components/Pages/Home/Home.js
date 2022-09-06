@@ -4,6 +4,7 @@ import BusinessSummary from "./BusinessSummary";
 import Delivery from "./Delivery";
 import GetInTouch from "./GetInTouch";
 import OfficeLocation from "./OfficeLocation";
+import OurProduct from "./OurProduct";
 import Reviews from "./Reviews";
 import SpecialProduct from "./SpecialProduct";
 
@@ -32,10 +33,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className=" px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <SpecialProduct></SpecialProduct>
-          <SpecialProduct></SpecialProduct>
-          <SpecialProduct></SpecialProduct>
+        <div className=" px-10">
           <SpecialProduct></SpecialProduct>
         </div>
       </section>
@@ -54,11 +52,8 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className=" px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <SpecialProduct></SpecialProduct>
-          <SpecialProduct></SpecialProduct>
-          <SpecialProduct></SpecialProduct>
-          <SpecialProduct></SpecialProduct>
+        <div className=" px-10 ">
+          <OurProduct></OurProduct>
         </div>
       </section>
 

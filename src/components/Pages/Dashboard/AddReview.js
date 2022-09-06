@@ -61,7 +61,7 @@ const AddReview = () => {
   };
 
   return (
-    <div className=" shadow-2xl w-7/12 mx-auto rounded-lg p-10">
+    <div className=" shadow-2xl my-4 w-6/12 mx-auto rounded-md p-10">
       <div className="my-8 title1 text-4xl text-center font-bold text-gray-700">
         <h1> Please give us your reviews</h1>
       </div>
@@ -70,7 +70,7 @@ const AddReview = () => {
         {/*  */}
         {/*  */}
         <div className="my-8">
-          <span className="  text-5xl flex justify-center gap-14">
+          <span className="  text-3xl flex justify-center gap-14">
             {ratings.map((r, index) => (
               <li key={index} className=" list-none">
                 <i
@@ -116,7 +116,7 @@ const AddReview = () => {
             cols="30"
             rows="3"
             type="text"
-            placeholder=" White here Your Reviews . . ."
+            placeholder=" White Here Your Reviews . . ."
             {...register("reviews", { required: true })}
             class="border p-2 border-gray-300 rounded-md focus:outline-none w-full"
           ></textarea>

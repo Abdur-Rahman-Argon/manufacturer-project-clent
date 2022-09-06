@@ -6,6 +6,7 @@ import auth from "../../../firebase.init";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
@@ -21,6 +22,7 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, CrUser, CLoading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, upError] = useUpdateProfile(auth);
 
   const [user, loading] = useAuthState(auth);
 
@@ -55,22 +57,29 @@ const SignUp = () => {
     setFromData(formData);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     const email = data.userEmail;
+    const displayName = data.userName;
     const password = data.password;
     createUserWithEmailAndPassword(email, password);
-    // const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-    // fetch(url, {
-    //   method: "POST",
-    //   body: fromData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     console.log("image", result);
-    //     setImageUrl(result.data.display_url);
-    //
-    //   });
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: fromData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("image", result);
+        setImageUrl(result.data.display_url);
+
+        const user = {
+          email,
+          displayName,
+          photoURL: result.data.display_url,
+        };
+
+      
   };
 
   return (

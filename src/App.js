@@ -65,7 +65,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="payment/:id"
+            path="payment/:paymentId"
             element={
               <RequireAuth>
                 <Payment />

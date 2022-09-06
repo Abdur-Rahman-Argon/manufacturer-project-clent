@@ -8,7 +8,7 @@ import twitter from "./../../../images/twitter.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#222525]  mt-2 ">
+    <footer className="bg-[#222525]">
       <footer class="footer p-10 text-white">
         <div>
           <div className="">
