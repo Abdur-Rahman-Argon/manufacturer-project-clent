@@ -47,7 +47,7 @@ const AddReview = () => {
       userReviews: data.reviews,
       ratings: currentRatings,
     };
-    fetch(`http://localhost:5000/review`, {
+    fetch(`https://adm-industry-ltd.onrender.com/review`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

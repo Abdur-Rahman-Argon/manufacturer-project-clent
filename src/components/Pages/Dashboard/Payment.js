@@ -18,8 +18,8 @@ const Payment = () => {
     error,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/getOrder/${paymentId}`).then((res) =>
-      res.json()
+    fetch(`https://adm-industry-ltd.onrender.com/getOrder/${paymentId}`).then(
+      (res) => res.json()
     )
   );
 

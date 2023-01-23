@@ -15,7 +15,9 @@ const ToolsDetails = () => {
     isLoading,
     error,
   } = useQuery("Tools", () =>
-    fetch(`http://localhost:5000/allTools/${toolsId}`).then((res) => res.json())
+    fetch(`https://adm-industry-ltd.onrender.com/allTools/${toolsId}`).then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {

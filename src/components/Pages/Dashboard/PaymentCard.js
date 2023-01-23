@@ -25,7 +25,7 @@ const PaymentCard = ({ myOrder }) => {
   const payPrice = 150;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/payment`, {
+    fetch(`https://adm-industry-ltd.onrender.com/payment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -114,7 +114,7 @@ const PaymentCard = ({ myOrder }) => {
           paymentIntent,
         };
 
-        fetch(`http://localhost:5000/paymentUpdate/${_id}`, {
+        fetch(`https://adm-industry-ltd.onrender.com/paymentUpdate/${_id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

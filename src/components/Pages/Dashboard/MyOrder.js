@@ -16,7 +16,7 @@ const MyOrder = () => {
   //   error,
   //   refetch,
   // } = useQuery("orders", () =>
-  //   fetch(`http://localhost:5000/orders/${user?.email}`).then((res) =>
+  //   fetch(`https://adm-industry-ltd.onrender.com/orders/${user?.email}`).then((res) =>
   //     res.json()
   //   )
   // );

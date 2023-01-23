@@ -5,7 +5,7 @@ const useTools = () => {
   const [tools, setTools] = useState();
 
   useEffect(() => {
-    const url = `http://localhost:5000/allTools`;
+    const url = `https://adm-industry-ltd.onrender.com/allTools`;
 
     fetch(url)
       .then((res) => res.json())

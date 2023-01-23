@@ -8,7 +8,7 @@ const useMyOrder = (user) => {
 
   useEffect(() => {
     const email = user?.email;
-    const url = `http://localhost:5000/orders/${email}`;
+    const url = `https://adm-industry-ltd.onrender.com/orders/${email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

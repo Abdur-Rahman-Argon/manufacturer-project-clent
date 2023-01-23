@@ -28,8 +28,8 @@ const Parches = () => {
     isLoading,
     error,
   } = useQuery("Tools", () =>
-    fetch(`http://localhost:5000/allTools/${parchesId}`).then((res) =>
-      res.json()
+    fetch(`https://adm-industry-ltd.onrender.com/allTools/${parchesId}`).then(
+      (res) => res.json()
     )
   );
 
@@ -84,7 +84,7 @@ const Parches = () => {
       parchesDate: parchesDate,
     };
 
-    fetch(`http://localhost:5000/orders`, {
+    fetch(`https://adm-industry-ltd.onrender.com/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -19,7 +19,7 @@ const Order = ({ orders }) => {
   };
 
   const removeOrder = (id) => {
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://adm-industry-ltd.onrender.com/order/${id}`, {
       method: "delete",
       headers: {
         // "content-type": "application/json",
